@@ -42,8 +42,6 @@
   <h1>Welcome to Quizify 🎉</h1>
   <div id="quiz"></div>
   <h2 id="score"></h2>
-  <h3>Leaderboard</h3>
-  <ul id="leaderboard"></ul>
 
   <script>
     let score = 0;
@@ -85,17 +83,8 @@ console.log(a === b)`,
       ],
     };
 
-    const leaderBoard = {
-      data: [
-        { name: "Ashish", score: 1 },
-        { name: "Riya", score: 3 },
-        { name: "Jay", score: 2 },
-      ],
-    };
-
     const quizContainer = document.getElementById("quiz");
     const scoreBoard = document.getElementById("score");
-    const leaderBoardUI = document.getElementById("leaderboard");
 
     function playGame(userAnswer, correctAnswer, questionElement) {
       if (userAnswer === correctAnswer) {
@@ -131,22 +120,7 @@ console.log(a === b)`,
       });
     }
 
-    function showHighScorer() {
-      leaderBoard.data.push({ name: userName, score: score });
-      let sortedScoreList = leaderBoard.data.sort((a, b) => b.score - a.score);
-
-      leaderBoardUI.innerHTML = "";
-      sortedScoreList.forEach(leader => {
-        const li = document.createElement("li");
-        li.innerText = `${leader.name} - Score: ${leader.score}`;
-        leaderBoardUI.appendChild(li);
-      });
-    }
-
     showQuestionAndOptions();
-
-    // After answering all, show leaderboard when user scrolls
-    window.onbeforeunload = () => showHighScorer();
   </script>
 </body>
 </html>
